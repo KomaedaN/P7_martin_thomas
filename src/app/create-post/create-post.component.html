@@ -1,0 +1,37 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-3 col-sm-3 align-self-end"> 
+            <ul class="nav me-5">
+                <li class="h3"><a routerLink="/post" class="text-dark nav-link">Tous les posts</a></li>
+                <li class="h3"><a routerLink="/create-post" class="text-dark nav-link">Ajouter un post</a></li>
+            </ul>
+        </div>
+
+        <div class="col-6 text-center">
+            <img class="" width="250px" src="assets/images/groupomania-logo.png" alt="Logo groupomania"/>
+        </div>
+        <div class="col-3 col-sm-3 align-self-end"> 
+            <ul class="nav me-5">
+                <li class="h3"><a routerLink="/home" class="text-dark nav-link">Déconnexion</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="container">
+        <hr>
+        <div class="row">
+            <div class="col-12">
+                <form class="card bg-light" #postForm="ngForm" (ngSubmit)="addPost(postForm.value)">
+                    <div class="card bg-light container">
+                        <label class="mt-4" for="inputTitle">Titre</label>
+                        <input type="text" class="form-control mt-2" id="title" ngModel name="title" required>
+        
+                        <label class="mt-4" for="inputDescription">description</label>
+                        <textarea class="form-control mt-2" rows="4" id="description" ngModel name="description" required></textarea>
+        
+                        <button  class="mt-5 mb-4 btn btn-primary col-7 col-sm-5" [disabled]="!postForm.valid">Publier</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
