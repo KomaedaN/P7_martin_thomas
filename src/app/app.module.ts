@@ -11,6 +11,7 @@ import { SignupComponent } from './signup/signup.component';
 import { LoginComponent } from './login/login.component';
 import { PostComponent } from './post/post.component';
 import { CreatePostComponent } from './create-post/create-post.component';
+import { PostDetailsComponent } from './post-details/post-details.component';
 
 
 
@@ -21,7 +22,8 @@ import { CreatePostComponent } from './create-post/create-post.component';
     SignupComponent,
     LoginComponent,
     PostComponent,
-    CreatePostComponent
+    CreatePostComponent,
+    PostDetailsComponent
   ],
   imports: [
     BrowserModule,

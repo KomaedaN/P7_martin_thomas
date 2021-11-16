@@ -6,7 +6,7 @@ import { LoginComponent } from './login/login.component';
 import { SignupComponent } from './signup/signup.component';
 import { PostComponent } from './post/post.component';
 import { CreatePostComponent } from './create-post/create-post.component';
-
+import { PostDetailsComponent } from './post-details/post-details.component';
 
 
 const appRoutes: Routes = [
@@ -15,7 +15,8 @@ const appRoutes: Routes = [
     { path: 'login', component: LoginComponent},
     { path: 'signup', component: SignupComponent},
     { path: 'post', component: PostComponent},
-    { path: 'create-post', component: CreatePostComponent}
+    { path: 'create-post', component: CreatePostComponent},
+    { path: 'post-details', component: PostDetailsComponent}
 ];
 
 @NgModule({
