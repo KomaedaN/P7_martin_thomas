@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { PostService } from '../services/post.service';
-import { Post } from '../models/post.model';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -12,7 +12,8 @@ export class CreatePostComponent implements OnInit {
 
   
 
-  constructor(private postService: PostService) { }
+  constructor(private postService: PostService,
+              private router: Router) { }
 
   ngOnInit(): void {
   }
@@ -27,6 +28,7 @@ export class CreatePostComponent implements OnInit {
     .subscribe(
       data => {
         console.log(data);
+        this.router.navigate(['/post']);
       },
       error => {
         console.log(error);
@@ -34,9 +36,7 @@ export class CreatePostComponent implements OnInit {
     };
   }
 
-  // navigatePost(){
-  //   this.router.navigate(['/post']);
-  // }
+
   
 
 

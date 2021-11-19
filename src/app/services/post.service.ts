@@ -31,8 +31,4 @@ export class PostService {
   delete(id: any): Observable<Post> {
     return this.http.delete(`${baseUrl}/${id}`);
   }
-  
-  deleteAll(): Observable<Post> {
-    return this.http.delete(baseUrl);
-  }
 }

@@ -16,7 +16,7 @@ const appRoutes: Routes = [
     { path: 'signup', component: SignupComponent},
     { path: 'post', component: PostComponent},
     { path: 'create-post', component: CreatePostComponent},
-    { path: 'post-details', component: PostDetailsComponent}
+    { path: 'post-details/:id', component: PostDetailsComponent}
 ];
 
 @NgModule({
