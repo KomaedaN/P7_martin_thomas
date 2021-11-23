@@ -5,4 +5,5 @@ export class Post {
     published?: boolean;
     createdAt?: Date;
     updatedAt?: Date;
+    user_id?: number;
   }

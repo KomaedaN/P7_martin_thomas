@@ -6,7 +6,7 @@ require('dotenv').config();
 
 const postRoutes = require('./routes/post');
 const userRoutes = require('./routes/user');
-
+const commentRoutes = require('./routes/comment');
 
 const app = express();
 
@@ -25,6 +25,6 @@ app.use(bodyParser.json());
 
 app.use('/api/post', postRoutes);
 app.use('/api/auth', userRoutes);
-
+app.use('/api/comment', commentRoutes);
 
 module.exports = app;

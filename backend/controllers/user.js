@@ -4,7 +4,6 @@ require('dotenv').config();
 const db = require("../models/userSequelize");
 const User = db.user;
 
-
 exports.signup = (req, res, next) => {
     bcrypt.hash(req.body.password, 10)
       .then(hash => {
@@ -45,3 +44,30 @@ exports.login = (req, res, next) => {
       })
       .catch(error => res.status(500).json({ error }));
 };
+
+exports.getAllUsers = (req, res) => {
+  User.findAll()
+    .then(data => {
+      res.send(data);
+    })
+    .catch(err => {
+      res.status(500).send({
+        message:
+          err.message || "Some error occurred while retrieving Posts."
+      });
+    });
+};
+
+exports.getUser = (req, res) => {
+  const id = req.params.id;
+  User.findByPk(id)
+    .then(data => {
+      res.send(data)
+    })
+    .catch(err => {
+      res.status(500).send({
+        message:
+          err.message || "Some error occurred while retrieving Posts."
+      });
+    });
+}

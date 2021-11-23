@@ -28,7 +28,6 @@ export class SignupComponent implements OnInit {
     this.auth.signup(UserData.email, UserData.password, UserData.username)
       .subscribe( data => {
         return data;
-        console.log(data);
       })
    }
 

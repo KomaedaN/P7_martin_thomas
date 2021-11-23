@@ -3,6 +3,7 @@ import { PostService } from '../services/post.service';
 import { Post } from '../models/post.model';
 import { ActivatedRoute, Router } from '@angular/router';
 
+
 @Component({
   selector: 'app-post-details',
   templateUrl: './post-details.component.html',
@@ -11,10 +12,14 @@ import { ActivatedRoute, Router } from '@angular/router';
 export class PostDetailsComponent implements OnInit {
 
 
+  currentUser = localStorage.getItem("user_Id");
+  
+  
   postFocus: Post = {
   title: '',
   description: '',
   published: false,
+  user_id: 0,
 }
 
   constructor(private postService: PostService,
@@ -22,7 +27,6 @@ export class PostDetailsComponent implements OnInit {
               private router: Router) { }
 
   ngOnInit(): void {
-    console.log(this.route.snapshot.params);
     this.getPost(this.route.snapshot.params.id);
   }
 

@@ -10,6 +10,7 @@ import { Post } from '../models/post.model';
 })
 export class PostComponent implements OnInit {
 
+  currentUser = localStorage.getItem("user_Id");
   posts: Post[] = [];
   currentPost: Post = {};
 
@@ -31,4 +32,5 @@ export class PostComponent implements OnInit {
         console.log(error);
       });
   }
+
 }

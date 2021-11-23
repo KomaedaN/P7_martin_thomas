@@ -1,5 +1,5 @@
-const db = require("../models/postSequelize");
-const Post = db.post; 
+const db = require("../models/commentSequelize");
+const Comment = db.comment; 
 
 exports.createPost = (req, res, next) => {
   const post = {
@@ -9,7 +9,7 @@ exports.createPost = (req, res, next) => {
     user_id: req.body.user_id
   };
   
-  Post.create(post)
+  Comment.create(post)
     .then(data => {
       res.send(data);
     })

@@ -10,7 +10,7 @@ import { Router } from '@angular/router';
 })
 export class CreatePostComponent implements OnInit {
 
-  
+  currentUser = localStorage.getItem("user_Id");
 
   constructor(private postService: PostService,
               private router: Router) { }
@@ -18,10 +18,11 @@ export class CreatePostComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  addPost(postdata: {title: string; description: string}): void {
+  addPost(postdata: {title: string; description: string; user_id: number}): void {
     const data = {
       title: postdata.title,
-      description: postdata.description
+      description: postdata.description,
+      user_id: localStorage.getItem('user_Id')
     };
     
     this.postService.create(data)

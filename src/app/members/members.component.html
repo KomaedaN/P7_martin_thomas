@@ -10,7 +10,7 @@
                 <li class="h3"><a routerLink="/post" class="text-secondary nav-link"><i class="fas fa-home    "></i></a></li>
                 <li class="h3"><a routerLink="/members" class="text-primary nav-link"><i class="fas fa-users    "></i></a></li>
                 <li class="h3"><a routerLink="/create-post" class="text-secondary nav-link"><i class="fas fa-plus-circle    "></i></a></li>
-                <li class="h3"><a routerLink="/profil/:id" class="text-secondary nav-link"><i class="fas fa-user    "></i></a></li>
+                <li class="h3"><a routerLink="/profil/{{ currentUser }}" class="text-secondary nav-link"><i class="fas fa-user    "></i></a></li>
                 <li class="h3"><a routerLink="/home" class="text-secondary nav-link"><i class="fas fa-sign-out-alt    "></i></a></li>
             </ul>                      
         </div>
@@ -24,10 +24,11 @@
 
 <div class="container">
     <div class="row">
-        <!--Afficher les utilisateurs-->
-        <div class="col-3 card p-4 mt-5 justify-content-around border border-dark">
-            <h3 class="text-center">Test</h3>
-        </div>
+        <!--Afficher les utilisateurs-->       
+            <a class="col-6 col-sm-3 me-4 card p-4 mt-5 justify-content-around border border-dark" *ngFor="let membre of users" routerLink="/profil/{{ membre.id }}">
+                <h3 class="text-center">{{membre.username}}</h3>
+            </a>
+        
         <div class="col-1"></div>
         
         

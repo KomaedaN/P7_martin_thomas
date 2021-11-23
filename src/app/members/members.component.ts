@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { User } from '../models/user.model';
+import { AuthService } from '../services/auth.service';
 
 @Component({
   selector: 'app-members',
@@ -7,9 +9,25 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MembersComponent implements OnInit {
 
-  constructor() { }
+  currentUser = localStorage.getItem("user_Id");
+  users: any;
+
+  constructor(private authService: AuthService) {}
 
   ngOnInit(): void {
+    this.fecthUsers();
+  }
+
+  fecthUsers(): void {
+    this.authService.getAllUsers()
+    .subscribe(
+      username => {
+        this.users = username;
+        
+      },
+      error => {
+        console.log(error);
+      });
   }
 
 }
