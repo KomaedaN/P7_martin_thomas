@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule, Routes } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
 
@@ -12,6 +12,8 @@ import { LoginComponent } from './login/login.component';
 import { PostComponent } from './post/post.component';
 import { CreatePostComponent } from './create-post/create-post.component';
 import { PostDetailsComponent } from './post-details/post-details.component';
+import { ProfilComponent } from './profil/profil.component';
+import { MembersComponent } from './members/members.component';
 
 
 
@@ -23,13 +25,16 @@ import { PostDetailsComponent } from './post-details/post-details.component';
     LoginComponent,
     PostComponent,
     CreatePostComponent,
-    PostDetailsComponent
+    PostDetailsComponent,
+    ProfilComponent,
+    MembersComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

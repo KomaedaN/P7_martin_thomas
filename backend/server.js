@@ -1,4 +1,3 @@
-const express = require("express");
 const bodyParser = require("body-parser");
 const cors = require("cors");
 const app = require("./app");
@@ -15,9 +14,11 @@ app.use(bodyParser.json());
 // parse requests of content-type - application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: true }));
 
-const db = require("./models");
+const tblPost = require("./models/postSequelize");
+const tblUser = require("./models/userSequelize");
 
-db.sequelize.sync();
+tblPost.sequelize.sync();
+tblUser.sequelize.sync();
 // // drop the table if it already exists
 // db.sequelize.sync({ force: true }).then(() => {
 //   console.log("Drop and re-sync db.");

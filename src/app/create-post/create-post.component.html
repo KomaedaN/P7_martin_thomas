@@ -1,22 +1,27 @@
 <div class="container-fluid">
-    <div class="row">
-        <div class="col-3 col-sm-3 align-self-end"> 
-            <ul class="nav me-5">
-                <li class="h3"><a routerLink="/post" class="text-dark nav-link">Tous les posts</a></li>
-                <li class="h3"><a routerLink="/create-post" class="text-dark nav-link">Ajouter un post</a></li>
-            </ul>
+    <div class="row">        
+        <div class="col-lg-2"> 
+            
         </div>
 
-        <div class="col-6 text-center">
+        <div class="col-12 col-lg-8 text-center d-flex justify-content-around ">
             <img class="" width="250px" src="assets/images/groupomania-logo.png" alt="Logo groupomania"/>
+            <ul class="nav me-5 align-self-end margin-b">
+                <li class="h3"><a routerLink="/post" class="text-secondary nav-link"><i class="fas fa-home    "></i></a></li>
+                <li class="h3"><a routerLink="/members" class="text-secondary nav-link"><i class="fas fa-users    "></i></a></li>
+                <li class="h3"><a routerLink="/create-post" class="text-primary nav-link"><i class="fas fa-plus-circle    "></i></a></li>
+                <li class="h3"><a routerLink="/profil/:id" class="text-secondary nav-link"><i class="fas fa-user    "></i></a></li>
+                <li class="h3"><a routerLink="/home" class="text-secondary nav-link"><i class="fas fa-sign-out-alt    "></i></a></li>
+            </ul>                      
         </div>
-        <div class="col-3 col-sm-3 align-self-end"> 
-            <ul class="nav me-5">
-                <li class="h3"><a routerLink="/home" class="text-dark nav-link">Déconnexion</a></li>
-            </ul>
+
+        <div class="col-lg-2"> 
+            
         </div>
     </div>
-    
+    <hr class="mt-0">
+</div>
+
     <div class="container">
         <hr>
         <div class="row">
@@ -24,10 +29,10 @@
                 <form class="card bg-light" #postForm="ngForm" (ngSubmit)="addPost(postForm.value)">
                     <div class="card bg-light container">
                         <label class="mt-4" for="inputTitle">Titre</label>
-                        <input type="text" class="form-control mt-2" id="title" ngModel name="title" required>
+                        <input type="text" class="form-control mt-2" id="title" ngModel name="title" placeholder="Ajouter un titre" required>
         
                         <label class="mt-4" for="inputDescription">description</label>
-                        <textarea class="form-control mt-2" rows="4" id="description" ngModel name="description" required></textarea>
+                        <textarea class="form-control mt-2" rows="4" id="description" ngModel name="description" placeholder="Ajouter un text" required></textarea>
         
                         <button  class="mt-5 mb-4 btn btn-primary col-7 col-sm-5" [disabled]="!postForm.valid">Publier</button>
                     </div>
@@ -35,4 +40,3 @@
             </div>
         </div>
     </div>
-</div>

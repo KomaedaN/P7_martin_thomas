@@ -28,15 +28,16 @@
             </ul>
         </div>
         
-        <form class="col-10 col-md-6">
+        <form class="col-10 col-md-6" [formGroup]='login' (ngSubmit)="onSubmit()">
             <div class="card bg-light container">
+                            
                 <label class="mt-4" for="inputEmail">Email</label>
-                <input type="email" class="form-control mt-2" required>
+                <input type="email" id="email" class="form-control mt-2" formControlName="email" required>
 
                 <label class="mt-4" for="inputPassword">Mot de passe</label>
-                <input type="password" class="form-control mt-2" required>
+                <input type="password" id="password" class="form-control mt-2" formControlName="password" required >
 
-                <button (click)="navigatePost()" class="mt-5 mb-4 btn btn-success col-7 col-sm-5">Connexion</button>
+                <button type="submit" class="mt-5 mb-4 btn btn-success col-7 col-sm-5" [disabled]="login.invalid">connexion</button>
             </div>
         </form>
 

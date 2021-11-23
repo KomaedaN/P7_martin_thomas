@@ -1,11 +1,12 @@
-const db = require("../models");
+const db = require("../models/postSequelize");
 const Post = db.post; 
 
 exports.createPost = (req, res, next) => {
   const post = {
     title: req.body.title,
     description: req.body.description,
-    published: true
+    published: true,
+    user_id: localStorage.get('user_id')
   };
   
   Post.create(post)

@@ -7,6 +7,8 @@ import { SignupComponent } from './signup/signup.component';
 import { PostComponent } from './post/post.component';
 import { CreatePostComponent } from './create-post/create-post.component';
 import { PostDetailsComponent } from './post-details/post-details.component';
+import { ProfilComponent } from './profil/profil.component';
+import { MembersComponent } from './members/members.component';
 
 
 const appRoutes: Routes = [
@@ -16,7 +18,9 @@ const appRoutes: Routes = [
     { path: 'signup', component: SignupComponent},
     { path: 'post', component: PostComponent},
     { path: 'create-post', component: CreatePostComponent},
-    { path: 'post-details/:id', component: PostDetailsComponent}
+    { path: 'post-details/:id', component: PostDetailsComponent},
+    { path: 'profil/:id', component: ProfilComponent},
+    { path: 'members', component: MembersComponent}
 ];
 
 @NgModule({

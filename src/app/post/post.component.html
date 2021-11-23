@@ -1,37 +1,54 @@
 <div class="container-fluid">
-    <div class="row">
-        <div class="col-3 col-sm-3 align-self-end"> 
-            <ul class="nav me-5">
-                <li class="h3"><a routerLink="/post" class="text-dark nav-link">Tous les posts</a></li>
-                <li class="h3"><a routerLink="/create-post" class="text-dark nav-link">Ajouter un post</a></li>
-            </ul>
+    <div class="row">        
+        <div class="col-lg-2"> 
+            
         </div>
 
-        <div class="col-6 text-center">
+        <div class="col-12 col-lg-8 text-center d-flex justify-content-around ">
             <img class="" width="250px" src="assets/images/groupomania-logo.png" alt="Logo groupomania"/>
+            <ul class="nav me-5 align-self-end margin-b">
+                <li class="h3"><a routerLink="/post" class="text-primary nav-link"><i class="fas fa-home    "></i></a></li>
+                <li class="h3"><a routerLink="/members" class="text-secondary nav-link"><i class="fas fa-users    "></i></a></li>
+                <li class="h3"><a routerLink="/create-post" class="text-secondary nav-link"><i class="fas fa-plus-circle    "></i></a></li>
+                <li class="h3"><a routerLink="/profil/:id" class="text-secondary nav-link"><i class="fas fa-user    "></i></a></li>
+                <li class="h3"><a routerLink="/home" class="text-secondary nav-link"><i class="fas fa-sign-out-alt    "></i></a></li>
+            </ul>                      
         </div>
-        <div class="col-3 col-sm-3 align-self-end"> 
-            <ul class="nav me-5">
-                <li class="h3"><a routerLink="/home" class="text-dark nav-link">Déconnexion</a></li>
-            </ul>
+
+        <div class="col-lg-2"> 
+            
         </div>
     </div>
-    <div class="container"><hr></div>
+    <hr class="mt-0">
 </div>
 
 
 <div class="row">
     <div class="col-1 col-lg-3"></div>
 <!--post template-->
-    <div class="col-10 col-lg-6">
-        <div *ngFor="let post of posts" class="post">
+    <div class="col-10 col-lg-6" >
+        <div *ngFor="let post of posts" class="post card mb-5">
             <a routerLink="/post-details/{{ post.id }}">
-            <div class="card mt-5 border-solid">
+            <div class="border-solid">
                 <p class="text-align-right bg-secondary pe-3">{{ post.createdAt | date:'short' }}</p>
                 <h3 class="mb-3 mx-4">{{ post.title }}</h3>
-                <p class="mb-3 mx-4">{{ post.description }}</p>
+                <p class="mx-4">{{ post.description }}</p>
             </div>
             </a>
+            <hr class="mt-0">
+            <div class="container mb-3">
+                <label class=" h5" for="inputComent">Commentaires</label><!--Afficher tous les commentaires-->
+                <ul class="list-none">
+                    <li class="font-italic">De <span class="text-danger">Thomas</span> le 10/10/10</li>
+                    <li class="">ahahahah trop bizn</li>
+                </ul>
+                <!--Ajouter un commentaire-->
+                    
+                <input type="coment" id="coment" class="form-control mt-2" placeholder="Ajouter un commentaire">
+                <div class="d-flex justify-content-end">               
+                    <button class="mt-2 mb-2 btn btn-primary col-3" disabled>Publier</button>
+                </div>                 
+            </div>
         </div>
     </div>
 
