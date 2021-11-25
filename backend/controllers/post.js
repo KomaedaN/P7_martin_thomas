@@ -1,5 +1,7 @@
 const db = require("../models/postSequelize");
-const Post = db.post; 
+const Post = db.post;
+const dbComment = require("../models/commentSequelize");
+const Comment = dbComment.comment; 
 
 exports.createPost = (req, res, next) => {
   const post = {
@@ -106,6 +108,15 @@ exports.deleteAll = (req, res) => {
 exports.getAllPost = (req, res) => {
   Post.findAll()
     .then(data => {
+      data.forEach(post => {
+        Comment.findAll({where: {
+          post_id: post.id,
+        }})    
+        .then (com => {
+          post.comments = com
+        })    
+      });
+      
       res.send(data);
     })
     .catch(err => {

@@ -11,7 +11,7 @@
                 <li class="h3"><a routerLink="/members" class="text-secondary nav-link"><i class="fas fa-users    "></i></a></li>
                 <li class="h3"><a routerLink="/create-post" class="text-secondary nav-link"><i class="fas fa-plus-circle    "></i></a></li>
                 <li class="h3"><a routerLink="/profil/{{ currentUser }}" class="text-secondary nav-link"><i class="fas fa-user    "></i></a></li>
-                <li class="h3"><a routerLink="/home" class="text-secondary nav-link"><i class="fas fa-sign-out-alt    "></i></a></li>
+                <li class="h3"><a routerLink="/home" class="text-secondary nav-link" (click)="onLogout()" ><i class="fas fa-sign-out-alt    "></i></a></li>
             </ul>                      
         </div>
 
@@ -23,7 +23,7 @@
 </div>
 
 
-<div class="row">
+<div class="row" *ngIf="isAuth">
     <div class="col-1 col-lg-3"></div>
 <!--post template-->
     <div class="col-10 col-lg-6" >
@@ -46,7 +46,7 @@
                     
                 <input type="coment" id="coment" class="form-control mt-2" placeholder="Ajouter un commentaire">
                 <div class="d-flex justify-content-end">               
-                    <button class="mt-2 mb-2 btn btn-primary col-3" disabled>Publier</button>
+                    <button class="mt-2 mb-2 btn btn-primary col-3">Publier</button>
                 </div>                 
             </div>
         </div>

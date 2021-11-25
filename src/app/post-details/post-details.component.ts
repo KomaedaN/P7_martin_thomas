@@ -2,7 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { PostService } from '../services/post.service';
 import { Post } from '../models/post.model';
 import { ActivatedRoute, Router } from '@angular/router';
-
+import { AuthService } from '../services/auth.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-post-details',
@@ -12,7 +13,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 export class PostDetailsComponent implements OnInit {
 
 
-  currentUser = localStorage.getItem("user_Id");
+  currentUser?: number;
   
   
   postFocus: Post = {
@@ -22,12 +23,24 @@ export class PostDetailsComponent implements OnInit {
   user_id: 0,
 }
 
+isAuthSub?: Subscription;
+isAuth?: Boolean;
+
   constructor(private postService: PostService,
               private route: ActivatedRoute,
+              private authService: AuthService,
               private router: Router) { }
 
   ngOnInit(): void {
     this.getPost(this.route.snapshot.params.id);
+    const current = localStorage.getItem("user_Id");
+    if (current != null){this.currentUser = parseInt(current)};
+    this.isAuthSub = this.authService.isAuth$.subscribe(
+      (auth) => {
+        this.isAuth = auth;
+      }
+    );
+
   }
 
   getPost(id: string): void {
@@ -62,5 +75,11 @@ export class PostDetailsComponent implements OnInit {
         error => {
           console.log(error);
         });
+    }
+
+    onLogout() {
+      this.authService.logout();
+      console.log('logout');
+      this.router.navigate(['/home']);
     }
 }

@@ -6,4 +6,5 @@ export class Post {
     createdAt?: Date;
     updatedAt?: Date;
     user_id?: number;
+    comments?: Comment[];
   }
