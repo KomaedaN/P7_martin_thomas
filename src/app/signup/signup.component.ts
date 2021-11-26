@@ -13,7 +13,7 @@ export class SignupComponent implements OnInit {
   registerForm: FormGroup = this.formBuilder.group({
     username: ['', [Validators.required, Validators.pattern(/[A-Za-zÀ-ÖØ-öø-ÿ ]{3,50}/)]],
     email: ['', [Validators.required, Validators.email]],
-    password: ['', [Validators.required, Validators.pattern(/[0-9a-zA-Z]{2,}/)]]
+    password: ['', [Validators.required, Validators.pattern(/[0-9a-zA-Z]{8,}/)]]
   });
 
   constructor(private auth: AuthService,
@@ -23,13 +23,6 @@ export class SignupComponent implements OnInit {
   ngOnInit(): void {
   
   }
-
-  register(UserData: {username: string, email: string, password: string}): void {
-    this.auth.signup(UserData.email, UserData.password, UserData.username)
-      .subscribe( data => {
-        return data;
-      })
-   }
 
   onSubmit(): void {
     const username: string = this.registerForm?.get('username')?.value;

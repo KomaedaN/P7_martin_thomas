@@ -17,3 +17,25 @@ a, a:hover, a:focus, a:active {
 .margin-b{
     margin-bottom: 0.7rem;
 }
+
+@media (min-width: 630px) {
+    .header-breakpoint {
+        display: flex;
+        justify-content: space-around;
+    }
+}
+
+@media (max-width: 630px) {
+    .nav-breakpoint {
+        justify-content: space-around;
+        margin-right: 0 !important;
+    }    
+}
+
+.color-goupomania {
+    color: #fd2d01;
+}
+
+.pink-groupomania:hover {
+    color: #ffd7d7 !important;
+}

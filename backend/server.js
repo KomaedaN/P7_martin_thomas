@@ -16,11 +16,9 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 const tblPost = require("./models/postSequelize");
 const tblUser = require("./models/userSequelize");
-const tblComment = require("./models/commentSequelize");
 
 tblPost.sequelize.sync();
 tblUser.sequelize.sync();
-tblComment.sequelize.sync();
 // // drop the table if it already exists
 // db.sequelize.sync({ force: true }).then(() => {
 //   console.log("Drop and re-sync db.");

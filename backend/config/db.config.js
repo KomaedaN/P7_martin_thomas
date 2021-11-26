@@ -1,7 +1,7 @@
 module.exports = {
     HOST: "localhost",
     USER: "root",
-    PASSWORD: "PaFGdkCm_7",
+    PASSWORD: process.env.DB_HIDE,
     DB: "post",
     port: 3306,
     dialect: "mysql",
@@ -12,3 +12,4 @@ module.exports = {
       idle: 10000
     }
   };
+  

@@ -1,3 +1,21 @@
 .remove-style{
     list-style-type: none;
 }
+
+.font-weight-bold{
+    font-weight: bold;
+    color: #fd2d01;
+}
+
+@media (min-width: 630px) {
+    .header-breakpoint {
+        display: flex;
+        justify-content: space-around;
+    }
+}
+
+@media (max-width: 630px) {
+    .nav-breakpoint {
+        justify-content: center;
+    }    
+}

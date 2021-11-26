@@ -1,36 +1,42 @@
-<div class="container-fluid">
-    <div class="row">        
-        <div class="col-lg-2"> 
-            
-        </div>
+<div *ngIf="isAuth">
+    <div class="container-fluid">
+        <div class="row">        
+            <div class="col-lg-2"> 
+                
+            </div>
 
-        <div class="col-12 col-lg-8 text-center d-flex justify-content-around ">
-            <img class="" width="250px" src="assets/images/groupomania-logo.png" alt="Logo groupomania"/>
-            <ul class="nav me-5 align-self-end margin-b">
-                <li class="h3"><a routerLink="/post" class="text-secondary nav-link"><i class="fas fa-home    "></i></a></li>
-                <li class="h3"><a routerLink="/members" class="text-secondary nav-link"><i class="fas fa-users    "></i></a></li>
-                <li class="h3"><a routerLink="/create-post" class="text-secondary nav-link"><i class="fas fa-plus-circle    "></i></a></li>
-                <li class="h3"><a routerLink="/profil/{{ currentUser }}" class="text-primary nav-link"><i class="fas fa-user    "></i></a></li>
-                <li class="h3"><a routerLink="/home" class="text-secondary nav-link" (click)="onLogout()"><i class="fas fa-sign-out-alt    "></i></a></li>
-            </ul>                      
-        </div>
+            <div class="col-12 col-lg-8 text-center header-breakpoint ">
+                <img class="" width="250px" src="assets/images/groupomania-logo.png" alt="Logo groupomania"/>
+                <ul class="nav me-5 align-self-end margin-b nav-breakpoint">
+                    <li class="h3"><a routerLink="/post" class="text-secondary nav-link pink-groupomania"><i class="fas fa-home    "></i></a></li>
+                    <li class="h3"><a routerLink="/members" class="text-secondary nav-link pink-groupomania"><i class="fas fa-users    "></i></a></li>
+                    <li class="h3"><a routerLink="/create-post" class="text-secondary nav-link pink-groupomania"><i class="fas fa-plus-circle    "></i></a></li>
+                    <li class="h3"><a routerLink="/profil/{{ currentUser }}" class="color-goupomania nav-link pink-groupomania"><i class="fas fa-user    "></i></a></li>
+                    <li class="h3"><a routerLink="/home" class="text-secondary nav-link pink-groupomania" (click)="onLogout()"><i class="fas fa-sign-out-alt    "></i></a></li>
+                </ul>                      
+            </div>
 
-        <div class="col-lg-2"> 
-            
+            <div class="col-lg-2"> 
+                
+            </div>
         </div>
+        <hr class="mt-0">
     </div>
-    <hr class="mt-0">
-</div>
 
-<div class="container">
-    <div class="card">
-        <h1 class="text-center mt-4">profil</h1>
-        <div class="container">
-            <hr>
-            <div class="row">
-                <p class="col-6"><span class="h4">Pseudo : </span>{{ userFocus.username}}</p>
-                <p class="col-6"><span class="h4">Email : </span>{{ userFocus.email}}</p>
+    <div class="container flex-justify">
+        <div class="card col-11 col-md-7 text-center">
+            <h1 class="text-center mt-4">profil</h1>
+            <div class="container">
+                <hr>
+                <div class="row">
+                    <p class="col-6"><span class="h4">Pseudo : </span>{{ userFocus.username}}</p>
+                    <p class="col-6"><span class="h4">Email : </span>{{ userFocus.email}}</p>
+                </div>
             </div>
         </div>
     </div>
+</div>
+
+<div *ngIf="!isAuth">
+    <app-home></app-home>
 </div>

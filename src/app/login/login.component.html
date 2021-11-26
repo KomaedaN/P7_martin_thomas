@@ -4,11 +4,11 @@
             
         </div>
 
-        <div class="col-12 col-lg-8 text-center d-flex justify-content-around ">
-            <img class="" width="250px" src="assets/images/groupomania-logo.png" alt="Logo groupomania"/>
-            <ul class="nav me-5 align-self-end margin-b">
-                <li class="h3"><a routerLink="/signup" class="text-secondary nav-link">Inscription</a></li>
-                <li class="h3"><a routerLink="/login" class="text-primary nav-link text-decoration-underline">Connexion</a></li>
+        <div class="col-12 col-lg-8 text-center header-breakpoint">
+            <img class="" width="100px" src="assets/images/icon.png" alt="Logo groupomania"/>
+            <ul class="nav align-self-end margin-b nav-breakpoint pb-2">
+                <li class="h2"><a routerLink="/signup" class="text-secondary nav-link">Inscription</a></li>
+                <li class="h2"><a routerLink="/login" class="text-primary nav-link text-decoration-underline">Connexion</a></li>
             </ul>                      
         </div>
 
@@ -19,16 +19,18 @@
     <hr class="mt-0">
 </div>
 
+<h1 class="text-center font-weight-bold">Groupomania</h1>
+
 <div class="container">
     <div class="row mt-5">
-        <div class="col-1 col-md-3">
+        <div class="col-0 col-md-3">
             <ul class="list-group list-group-horizontal remove-style">
                 <li class=""><!----></li>
                 <li class=""><!----></li>
             </ul>
         </div>
         
-        <form class="col-10 col-md-6" [formGroup]='login' (ngSubmit)="onSubmit()">
+        <form class="col-12 col-md-6" [formGroup]='login' (ngSubmit)="onSubmit()">
             <div class="card bg-light container">
                             
                 <label class="mt-4" for="inputEmail">Email</label>
@@ -41,7 +43,7 @@
             </div>
         </form>
 
-        <div class="col-1 col-md-3">
+        <div class="col-0 col-md-3">
             <ul class="list-group list-group-horizontal remove-style">
                 <li class=""><!----></li>
                 <li class=""><!----></li>

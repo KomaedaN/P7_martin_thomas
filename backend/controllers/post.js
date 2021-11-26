@@ -1,7 +1,5 @@
 const db = require("../models/postSequelize");
 const Post = db.post;
-const dbComment = require("../models/commentSequelize");
-const Comment = dbComment.comment; 
 
 exports.createPost = (req, res, next) => {
   const post = {
@@ -87,36 +85,12 @@ exports.deletePost = (req, res) => {
     });
 };
 
-// Delete all Posts from the database.
-exports.deleteAll = (req, res) => {
-  Post.destroy({
-    where: {},
-    truncate: false
-  })
-    .then(nums => {
-      res.send({ message: `${nums} Posts were deleted successfully!` });
-    })
-    .catch(err => {
-      res.status(500).send({
-        message:
-          err.message || "Some error occurred while removing all Posts."
-      });
-    });
-};
-
 // find all published Post
 exports.getAllPost = (req, res) => {
-  Post.findAll()
-    .then(data => {
-      data.forEach(post => {
-        Comment.findAll({where: {
-          post_id: post.id,
-        }})    
-        .then (com => {
-          post.comments = com
-        })    
-      });
-      
+  Post.findAll({order: [
+    ['createdAt', 'DESC'] 
+  ]})
+    .then(data => {           
       res.send(data);
     })
     .catch(err => {
