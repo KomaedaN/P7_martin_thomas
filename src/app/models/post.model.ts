@@ -1,4 +1,3 @@
-import { Comment } from "./comment.model";
 export class Post {
     id?: any;
     title?: string;
@@ -7,5 +6,4 @@ export class Post {
     createdAt?: Date;
     updatedAt?: Date;
     user_id?: number;
-    comments?: Comment[];
   }

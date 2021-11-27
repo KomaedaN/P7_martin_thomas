@@ -31,9 +31,11 @@ exports.login = (req, res, next) => {
               return res.status(401).json({ error: 'Mot de passe incorrect !' });
             }
             res.status(200).json({
+              isAdmin: user.isAdmin,
               userId: user.id,
               token: jwt.sign(
-                  { userId: user.id },
+                  { isAdmin: user.isAdmin,
+                    userId: user.id },
                   process.env.TOKEN_HIDE,
                   { expiresIn: '24h' }
               )
@@ -47,12 +49,13 @@ exports.login = (req, res, next) => {
 exports.getAllUsers = (req, res) => {
   User.findAll()
     .then(data => {
+      console.log(data);
       res.send(data);
     })
     .catch(err => {
       res.status(500).send({
         message:
-          err.message || "Some error occurred while retrieving Posts."
+          err.message || "Some error occurred while retrieving Users."
       });
     });
 };
@@ -66,7 +69,31 @@ exports.getUser = (req, res) => {
     .catch(err => {
       res.status(500).send({
         message:
-          err.message || "Some error occurred while retrieving Posts."
+          err.message || "Some error occurred while retrieving Users."
       });
     });
 }
+
+exports.deleteUser = (req, res) => {
+  const id = req.params.id;
+
+  User.destroy({
+    where: { id: id }
+  })
+    .then(num => {
+      if (num == 1) {
+        res.send({
+          message: "User was deleted successfully!"
+        });
+      } else {
+        res.send({
+          message: `Cannot delete User with id=${id}. Maybe User was not found!`
+        });
+      }
+    })
+    .catch(err => {
+      res.status(500).send({
+        message: "Could not delete User with id=" + id
+      });
+    });
+};

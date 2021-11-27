@@ -4,7 +4,7 @@ import { Post } from '../models/post.model';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AuthService } from '../services/auth.service';
 import { Subscription } from 'rxjs';
-
+import { User } from '../models/user.model';
 @Component({
   selector: 'app-post-details',
   templateUrl: './post-details.component.html',
@@ -12,10 +12,10 @@ import { Subscription } from 'rxjs';
 })
 export class PostDetailsComponent implements OnInit {
 
-
+  role?: number;
   currentUser?: number;
   
-  
+  user: User['isAdmin'];
   postFocus: Post = {
   title: '',
   description: '',
@@ -40,6 +40,8 @@ isAuth?: Boolean;
         this.isAuth = auth;
       }
     );
+    const currentRole = localStorage.getItem("Admin");
+    if (currentRole != null){this.role = parseInt(currentRole)};
 
   }
 

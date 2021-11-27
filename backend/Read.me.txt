@@ -1,0 +1,7 @@
+Renommer le fichier ".env_sample" par ".env" et changer son contenu par:
+
+TOKEN_HIDE="iAjoircgjzoxASxDRjpZoeSwKFQC6HcZ"
+
+
+
+Puis lancer la commande "node server" dans le dossier "backend" et "ng serve" pour le front

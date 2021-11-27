@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { User } from '../models/user.model';
 import { AuthService } from '../services/auth.service';
 import { Subscription } from 'rxjs';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-members',
@@ -11,6 +11,11 @@ import { Router } from '@angular/router';
 })
 export class MembersComponent implements OnInit {
 
+
+  userFocus: User = {
+    username: '',
+    email: '',
+  }
   currentUser = localStorage.getItem("user_Id");
   users: any;
 
@@ -18,7 +23,8 @@ export class MembersComponent implements OnInit {
   isAuth?: Boolean;
 
   constructor(private authService: AuthService,
-              private router: Router) {}
+              private router: Router,
+              private route: ActivatedRoute) {}
 
   ngOnInit(): void {
     this.fecthUsers();

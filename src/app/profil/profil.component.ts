@@ -4,6 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { User } from '../models/user.model';
 import { Subscription } from 'rxjs';
 
+
 @Component({
   selector: 'app-profil',
   templateUrl: './profil.component.html',
@@ -11,8 +12,12 @@ import { Subscription } from 'rxjs';
 })
 export class ProfilComponent implements OnInit {
 
-  currentUser = localStorage.getItem("user_Id");
+  role?: number;
+  userDetails?: User;
 
+  currentRole = localStorage.getItem("isAdmin");
+  currentUser = localStorage.getItem("user_Id");
+  userRole: User['isAdmin'];
   userFocus: User = {
     username: '',
     email: '',
@@ -32,6 +37,8 @@ export class ProfilComponent implements OnInit {
         this.isAuth = auth;
       }
     );
+    const currentRole = localStorage.getItem("Admin");
+    if (currentRole != null){this.role = parseInt(currentRole)};
   }
 
   
@@ -47,6 +54,21 @@ export class ProfilComponent implements OnInit {
           console.log(error);
         });
   }
+
+  deleteUser(id: number) {
+    this.authService.delete(this.userFocus.id)
+        .subscribe(
+          response => {
+          console.log(response)
+          if(this.role == 1) {
+            this.router.navigate(['/post']);
+          } else{
+          this.router.navigate(['/home']);
+          }})
+    }
+      
+  
+
 
   onLogout() {
     this.authService.logout();

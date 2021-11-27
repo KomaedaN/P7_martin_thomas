@@ -4,7 +4,7 @@ import { Post } from '../models/post.model';
 import { AuthService } from '../services/auth.service';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
-
+import { User } from '../models/user.model';
 @Component({
   selector: 'app-post',
   templateUrl: './post.component.html',
@@ -12,12 +12,13 @@ import { Subscription } from 'rxjs';
 })
 export class PostComponent implements OnInit {
 
+  role?: number;
   currentUser = localStorage.getItem("user_Id");
-  comments: Comment[] = [];
   
+  user: User['isAdmin'];
   posts: Post[] = [];
   currentPost: Post = {};
-
+  
   isAuthSub?: Subscription;
   isAuth?: Boolean;
 
@@ -31,8 +32,7 @@ export class PostComponent implements OnInit {
       (auth) => {
         this.isAuth = auth;
       }
-    );
-    
+    );    
   }
 
   fecthPosts(): void {

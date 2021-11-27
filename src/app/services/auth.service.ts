@@ -11,11 +11,12 @@ const userUrl = 'http://localhost:8080/api/auth';
 })
 
   export class AuthService {
+    user?: User;
 
     isAuth$ = new BehaviorSubject<boolean>(false);
     token?: string;
     userId?: string;
-
+    try?: boolean;
     constructor(private http: HttpClient) { }
     
     //s'inscrire
@@ -26,7 +27,9 @@ const userUrl = 'http://localhost:8080/api/auth';
     login(email: string, password: string): void {
         this.http.post(`${userUrl}/login`, {email, password})
           .subscribe((response): void => {
+            console.log(response);
             const res = JSON.parse(JSON.stringify(response));
+            localStorage.setItem("Admin", JSON.stringify(res.isAdmin));
             localStorage.setItem("user_Id", JSON.stringify(res.userId));   
             this.isAuth$.next(true);
           });
@@ -43,4 +46,8 @@ const userUrl = 'http://localhost:8080/api/auth';
     getOneUser(id: any): Observable<User> {
       return this.http.get(`${userUrl}/profil/${id}`);
     } 
+
+    delete(id: any): Observable<User> {
+      return this.http.delete(`${userUrl}/${id}`);
+    }
 }
